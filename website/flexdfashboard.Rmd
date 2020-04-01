@@ -1,0 +1,55 @@
+---
+title: "COVID-19 trend analysis Belgium"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+setwd("../")
+source("ConfirmedCasesPlot.R")
+library(plotly)
+
+
+```
+
+Row
+-------------------------------------
+    
+### Growth in number of deaths compared to other countries
+    
+```{r}
+ggplotly(pdelaylog)
+```
+    
+### Number of patients in intensive care wards
+
+```{r}
+ggplotly(be_icu) %>% style(textposition = "right")
+```
+
+Row
+-------------------------------------
+    
+### Cummulative number of confirmed COVID-19 cases
+    
+```{r}
+ggplotly(plin)
+```
+   
+Row
+-------------------------------------
+    
+### Trend in daily increase in reported cases
+    
+```{r}
+ggplotly(increase_conf)
+```
+    
+### Trend in number of patients admitted to an intensive care ward in Belgium
+
+```{r}
+ggplotly(nr_increase_icu)
+```
