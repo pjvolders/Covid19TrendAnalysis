@@ -75,7 +75,5 @@ Belgium data is obtained from the Sciensano [EPISTAT](https://epistat.wiv-isp.be
 
 Latest update: ``r Sys.time()``
 
-[@pjvolders](https://twitter.com/pjvolders)
-
-
+[\@pjvolders](https://twitter.com/pjvolders)
 
