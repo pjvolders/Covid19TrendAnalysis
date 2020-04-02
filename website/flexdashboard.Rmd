@@ -4,6 +4,10 @@ output:
   flexdashboard::flex_dashboard:
     orientation: rows
     vertical_layout: scroll
+    source_code: "https://github.com/pjvolders/Covid19TrendAnalysis"
+twitter:
+  site: "@rstudio"
+  creator: "@pjvolders"
 ---
 
 ```{r setup, include=FALSE}
@@ -14,6 +18,9 @@ library(plotly)
 
 
 ```
+
+Home {data-icon="fa-home"}
+===================================== 
 
 Row
 -------------------------------------
@@ -38,7 +45,10 @@ Row
 ```{r}
 ggplotly(plin)
 ```
-   
+
+Trends {data-icon="fa-chart-line"}
+===================================== 
+
 Row
 -------------------------------------
     
@@ -53,3 +63,19 @@ ggplotly(increase_conf)
 ```{r}
 ggplotly(nr_increase_icu)
 ```
+
+About {.sidebar}
+===================================== 
+
+## Infomation
+
+Worldwide data obtained from the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) [GitHub repository](https://github.com/CSSEGISandData/COVID-19).
+
+Belgium data is obtained from the Sciensano [EPISTAT](https://epistat.wiv-isp.be/covid/) platform
+
+Latest update: ``r Sys.time()``
+
+[@pjvolders](https://twitter.com/pjvolders)
+
+
+
