@@ -104,7 +104,7 @@ Worldwide data obtained from the Johns Hopkins University Center for Systems Sci
 
 Belgium data is obtained from the Sciensano [EPISTAT](https://epistat.wiv-isp.be/covid/) platform
 
-Latest update: ``r Sys.time()` CEST`
+Latest update: ``r format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z", tz = "CET")``
 
 ## Creator
 
