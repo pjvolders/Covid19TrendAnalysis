@@ -31,7 +31,9 @@ country_colors = c(
 )   
 
 # Read in the data
-dat <- read_csv("processed/covid_selection.csv")
+dat <- read_csv("processed/covid_selection.csv") %>% 
+  filter(Country %in% names(country_colors)) 
+
 #dat = dat %>%
 #  filter(Country != "Argentina")
 
@@ -127,7 +129,7 @@ ggsave(filename = fn, plot = pdelaylog, width = 6, height = 4)
 #ggsave(file.path("Fig",fname), width = 8, height = 8)
 
 #' # Animated
-library(gganimate)
+#library(gganimate)
 
 ggplot(plotdata, aes(Confirmed, Deaths, color = Country))+
   geom_point(alpha = 0.5) + geom_line(stat = "smooth",
@@ -188,6 +190,9 @@ ggplot(doubling_time, aes(date, doubling_time, color = Country))+
 #' Sciensano data
 sciensano_be = read_csv('COVID19BE_HOSP.csv')
 
+#1765
+nr_of_beds = 2293
+
 be_icu = sciensano_be %>%
   group_by(DATE, REGION) %>%
   summarise(TOTAL_IN_ICU = sum(TOTAL_IN_ICU)) %>%
@@ -195,7 +200,7 @@ be_icu = sciensano_be %>%
   select(date = DATE, `patients in icu` = TOTAL_IN_ICU, region = REGION, `total in icu Belgium`) %>%
   ggplot(aes(date, `patients in icu`, fill=region, label = `total in icu Belgium`)) +
   geom_area(alpha = 0.7) +
-  geom_hline(yintercept=1765, color = "#666666", linetype = 2) +
+  geom_hline(yintercept=nr_of_beds, color = "#666666", linetype = 2) +
   annotate("text", x = as.Date('2020-03-15') , y = 1830, 
            label = "max nr of beds in ICU", hjust = 'left', color = "#666666") +
   labs(y = "nr of patients on intensive care", x = 'date', fill = "region") +

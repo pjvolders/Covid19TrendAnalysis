@@ -14,6 +14,7 @@ twitter:
 library(flexdashboard)
 setwd("../")
 source("ConfirmedCasesPlot.R")
+source("maps.R")
 library(plotly)
 
 
@@ -46,9 +47,6 @@ Row
 ggplotly(plin)
 ```
 
-Trends {data-icon="fa-chart-line"}
-===================================== 
-
 Row
 -------------------------------------
     
@@ -64,16 +62,51 @@ ggplotly(increase_conf)
 ggplotly(nr_increase_icu)
 ```
 
+Row {data-height=600}
+-------------------------------------
+    
+### Worldwide number of confirmed cases per million inhabitants
+    
+```{r}
+cases_plot_geo
+```
+
+Row {data-height=600}
+-------------------------------------
+
+### Worldwide number of deaths per million inhabitants
+    
+```{r}
+deaths_plot_geo
+```
+    
+Row
+-------------------------------------
+### Overview
+
+```{r}
+latest_dat_pop %>%
+  arrange(desc(deaths_per_million)) %>%
+  mutate(deaths_per_million = round(deaths_per_million, 2),
+         cases_per_million = round(cases_per_million, 2)) %>%
+  select(country = Country, `population (thousands)` = population,
+         `confirmed cases` = Confirmed, `deaths` = Deaths,
+         `cases per million` = cases_per_million, `deaths per million` = deaths_per_million) %>%
+  DT::datatable(rownames=F)
+```
+
 About {.sidebar}
 ===================================== 
 
-## Infomation
+## Data
 
 Worldwide data obtained from the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) [GitHub repository](https://github.com/CSSEGISandData/COVID-19).
 
 Belgium data is obtained from the Sciensano [EPISTAT](https://epistat.wiv-isp.be/covid/) platform
 
-Latest update: ``r Sys.time()``
+Latest update: ``r Sys.time()` CEST`
+
+## Creator
 
 [\@pjvolders](https://twitter.com/pjvolders)
 

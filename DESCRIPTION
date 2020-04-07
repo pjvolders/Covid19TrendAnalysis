@@ -1,0 +1,18 @@
+Package: Covid19TrendAnalysis
+Title: What The Package Does (one line, title case required)
+Version: 0.1
+Authors@R: person("First", "Last", email = "first.last@example.com",
+                  role = c("aut", "cre"))
+Description: What the package does (one paragraph)
+Depends: R (>= 3.1.0)
+License: What license is it under?
+LazyData: true
+Imports:
+    patchwork,
+    gridExtra,
+    flexdashboard,
+    wpp2019,
+    plotly,
+    conflicted,
+    maps
+
